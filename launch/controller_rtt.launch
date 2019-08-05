@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <group ns="star">
+
+    <node pkg="rtt_ros"
+	  type="deployer"
+	  name="controller_rtt"
+	  args="$(find controller_rtt)/scripts/controller_rtt.ops"
+	  output="screen">
+    </node>
+
+  </group>
+
+  
+</launch>
+
+

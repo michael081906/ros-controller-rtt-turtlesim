@@ -1,0 +1,23 @@
+import("rtt_ros")
+import("rtt_roscomm")
+import("rtt_rosnode")
+
+import("rtt_geometry_msgs")
+
+import("controller_rtt")
+
+require("ros");
+
+
+loadComponent( "mkam_controller", "controller_rtt" )
+
+setActivity( "mkam_controller", 0.1, 0, ORO_SCHED_OTHER )
+
+mkam_controller.setCpuAffinity( 1 );
+
+stream("mkam_controller.OutCmd",   ros.topic("/turtle1/cmd_vel"))
+
+
+mkam_controller.configure()
+mkam_controller.start()
+
