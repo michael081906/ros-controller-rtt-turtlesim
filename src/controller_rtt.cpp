@@ -14,6 +14,7 @@ controller_rtt::controller_rtt( const std::string& name ):
 bool controller_rtt::configureHook(){
 
   std::cout << "configured" << std::endl;
+
   return true;
 
 }
@@ -31,11 +32,15 @@ controller_rtt::~controller_rtt()
 {}
 
 void controller_rtt::updateHook(){
-   geometry_msgs::Twist cmd;
-   cmd.linear.x = 0.1;
-   cmd.angular.z = 0.5;
+
+   double time_now = ros::Time::now().toSec();
+
+   cmd.linear.x = breathing_magnitude * cos(time_now/breathing_period);
+
    port_out_cmd.write(cmd);
    std::cout << "running the loop" << std::endl;
+
+
 }
 
 

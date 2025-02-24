@@ -11,7 +11,7 @@ require("ros");
 
 loadComponent( "mkam_controller", "controller_rtt" )
 
-setActivity( "mkam_controller", 0.1, 0, ORO_SCHED_OTHER )
+setActivity( "mkam_controller", 0.01, 0, ORO_SCHED_OTHER )
 
 mkam_controller.setCpuAffinity( 1 );
 
